@@ -1,12 +1,12 @@
 <?php
 session_start();
-if($_SESSION["priority"] == "")
+if(!(isset($_SESSION['priority'])))
 {
-	echo 'Nicht Authorisiert! Weiterleitung...<meta http-equiv="refresh" content="0.001;URL=http://localhost/Bauteildatenbank_Projekt_Fsst/V_5_Bauteildatenbank/black_white/login.php">';
+	header("Location: ./login.php");
 }
 else  if ($_SESSION["priority"] != "admin")
 {
-	echo 'Nicht Authorisiert! Weiterleitung...<meta http-equiv="refresh" content="0.001;URL=http://localhost/Bauteildatenbank_Projekt_Fsst/V_5_Bauteildatenbank/black_white/table.php">';
+	header("Location: ./table.php");
 }
 else
 {
@@ -37,10 +37,6 @@ else
 						<li class="selected"><a href="mitarbeiter.php">MitarbeiterNr</a></li>
 						<li><a href="table.php">Bauteile</a></li>
 						<li><a href="bestellungen.php">Bestellungen</a></li>
-						<li>
-							<!--<form method="POST">
-							<input class="search" type="text" name="search_field" placeholder="Enter keywords....." align=center /></li>
-						</form>-->
 					</ul>
 				</div>
 			</div>

@@ -1,17 +1,18 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Animated login form</title>
+  <title>Registration Bauteildatenbank</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
 
 <body>
   <div class="wrapper">
+    <h1  style="font-size:500%;">Bauteildatenbank</h1>
     <form class="login" method="POST">
       <p class="title">Registration</p>
       <input type="text" placeholder="MitarbeiterNr" name="MitarbeiterNr" id="MitarbeiterNr" autofocus>Text</ />
@@ -57,7 +58,7 @@ if((isset($_POST['MitarbeiterNr'])) and (isset($_POST['Vorname'])) and (isset($_
   VALUES ('$MitarbeiterNr', '$Vorname', '$Nachname', '$Abteilung', '$kennwort')";
   $result = mysqli_query ($conn,$query);
   mysqli_close($conn);
-  echo 'Login Erfolgreich! Weiterleitung...<meta http-equiv="refresh" content="0.001;URL=login.php">';
+  header("Location: ./login.php");
 }
 
 ?>

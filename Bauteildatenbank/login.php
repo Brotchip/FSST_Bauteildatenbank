@@ -59,10 +59,10 @@ if((isset($_POST['benutzername'])) and (isset($_POST['kennwort']))) {
 		$count = mysqli_num_rows($result);
 		if ($count == 1) {
 			$_SESSION["priority"] = "admin";
-			echo 'Login Erfolgreich! Weiterleitung...<meta http-equiv="refresh" content="0.001;URL=http://localhost/Bauteildatenbank_Projekt_Fsst/V_5_Bauteildatenbank/black_white/index.php">';
+			header("Location: ./mitarbeiter.php");
 		} else {
 			$_SESSION["priority"] = "user";
-			echo 'Login Erfolgreich! Weiterleitung...<meta http-equiv="refresh" content="0.001;URL=http://localhost/Bauteildatenbank_Projekt_Fsst/V_5_Bauteildatenbank/black_white/table.php">';
+			header("Location: ./table.php");
 		}
 		mysqli_close($conn);
 	} else {	//echo "Falscher Benutzername/Kennwort";

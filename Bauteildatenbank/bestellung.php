@@ -1,8 +1,8 @@
 <?php
 session_start();
-if($_SESSION["priority"] == "NULL")
+if(!(isset($_SESSION['priority'])))
 {
-	echo 'Nicht Authorisiert! Weiterleitung...<meta http-equiv="refresh" content="0.001;URL=http://localhost/Bauteildatenbank_Projekt_Fsst/V_5_Bauteildatenbank/black_white/login.php">';
+	header("Location: ./login.php");
 }
 else
 {
@@ -32,13 +32,7 @@ else
 						<!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
 						<li class="selected"><a href="mitarbeiter.php">MitarbeiterNr</a></li>
 						<li><a href="table.php">Bauteile</a></li>
-						<li><a href="page.html">A Page</a></li>
-						<li><a href="another_page.html">Another Page</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-						<li>
-							<!--<form method="POST">
-							<input class="search" type="text" name="search_field" placeholder="Enter keywords....." align=center /></li>
-						</form>-->
+						<li><a href="Bestellung.php">Bestellung</a></li>
 					</ul>
 				</div>
 			</div>
