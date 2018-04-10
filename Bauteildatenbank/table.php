@@ -100,6 +100,11 @@ else
 									<p class="form_settings" style="padding-top: 15px">
 										<input class="submit" type="submit" name="name" value="Sortieren" />
 									</p>
+									<p><span>ArtNr:</span><input type="text" name="ArtNr" value="" /></p>
+									<p><span>Stueck:</span><input type="text" name="Stueck" value="" /></p>
+									<p class="form_settings" style="padding-top: 15px">
+									<input class="submit" type="submit" name="name" value="Bestellen" />
+								</p>
 								</form>
 								<table class="table-fill">
 									<thead>
