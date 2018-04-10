@@ -30,19 +30,15 @@ else
 				<div id="menubar">
 					<ul id="menu">
 						<!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-						<li class="selected"><a href="mitarbeiter.php">MitarbeiterNr</a></li>
+						<li><a href="mitarbeiter.php">Mitarbeiter</a></li>
 						<li><a href="table.php">Bauteile</a></li>
-						<li><a href="Bestellung.php">Bestellung</a></li>
+						<li class="selected"><a href="Bestellung.php">Bestellungen</a></li>
 					</ul>
 				</div>
 			</div>
 			<div id="site_content">
 				<div id="content">
 					<head>
-						<meta charset="UTF-8">
-
-						<link rel="stylesheet" href="css/style.css">
-
 						<?php
 
 						require('config.php');

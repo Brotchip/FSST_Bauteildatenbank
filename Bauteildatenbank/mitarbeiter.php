@@ -34,7 +34,7 @@ else
 				<div id="menubar">
 					<ul id="menu">
 						<!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-						<li class="selected"><a href="mitarbeiter.php">MitarbeiterNr</a></li>
+						<li class="selected"><a href="mitarbeiter.php">Mitarbeiter</a></li>
 						<li><a href="table.php">Bauteile</a></li>
 						<li><a href="bestellungen.php">Bestellungen</a></li>
 					</ul>
@@ -43,10 +43,6 @@ else
 			<div id="site_content">
 				<div id="content">
 					<head>
-						<meta charset="UTF-8">
-
-						<link rel="stylesheet" href="css/style.css">
-
 						<?php
 
 						require('config.php');
@@ -58,8 +54,6 @@ else
 						$suche = $_POST['search_field'];
 						$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter`WHERE MitarbeiterNr='$suche' OR Vorname='$suche' OR Nachname='$suche' OR Abteilung='$suche'");
 					}*/
-
-
 
 					if(isset($_POST['sort']))
 					{

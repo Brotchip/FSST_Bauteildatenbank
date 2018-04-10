@@ -217,10 +217,10 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 .search
 { color: #5D5D5D; 
   border: 1px solid #BBB; 
-  width: 134px; 
+  height: 25px;
+  width: 150px; 
   padding: 4px; 
-  font: 50% arial, sans-serif;
-  align: center;}
+  font: 80% arial, sans-serif;}
   
 
 #colours
