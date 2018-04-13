@@ -97,9 +97,28 @@ else
 										</select>
 										<input class="search" type="text" name="suchbegriff" placeholder="Suchbegriff eingeben..." /></li>
 									</h1>
+									
 									<p class="form_settings" style="padding-top: 15px">
 										<input class="submit" type="submit" name="name" value="Sortieren" />
 									</p>
+									
+									</form>
+									<form method="POST" action="createBest.php">
+									<tr>
+										<td>ArtNr:</td>
+									</tr>
+									<tr>
+										<td>Stueck:</td>
+									</tr>
+									<tr>
+										<td><input type="text" name="ArtNr" value="" /></td>
+									</tr>
+									<tr>
+										<td><input type="text" name="Stueck" value="" /></td>
+									</tr>
+								<p class="form_settings" style="padding-top: 15px">
+									<input class="submit" type="submit" name="name" value="Bestellen" />
+								</p>
 								</form>
 								<table class="table-fill">
 									<thead>

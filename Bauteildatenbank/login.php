@@ -19,6 +19,7 @@ session_unset();
 
 <body>
 	<div class="wrapper">
+	<h1  style="font-size:500%;">Bauteildatenbank</h1>
 		<form class="login" method="POST">
 			<p class="title">Log in</p>
 			<input type="text" placeholder="MitarbeiterNr" name="benutzername" id="benutzername" autofocus required />
@@ -57,6 +58,7 @@ if((isset($_POST['benutzername'])) and (isset($_POST['kennwort']))) {
 		$query = "SELECT Abteilung FROM `mitarbeiter` WHERE MitarbeiterNr='$benutzername' and Kennwort='$kennwort' and Abteilung='IT'";
 		$result = mysqli_query ($conn,$query);
 		$count = mysqli_num_rows($result);
+		$_SESSION["MitarbeiterNr"] = $benutzername;
 		if ($count == 1) {
 			$_SESSION["priority"] = "admin";
 			header("Location: ./mitarbeiter.php");
@@ -64,9 +66,12 @@ if((isset($_POST['benutzername'])) and (isset($_POST['kennwort']))) {
 			$_SESSION["priority"] = "user";
 			header("Location: ./table.php");
 		}
-		mysqli_close($conn);
 	} else {	//echo "Falscher Benutzername/Kennwort";
-		$_SESSION["priority"] = "error";
+		?>
+		<script>
+			alert("MitarbeiterNr oder Passwort ist falsch!");
+		</script>
+		<?php
 	}
 	mysqli_close($conn);
 }

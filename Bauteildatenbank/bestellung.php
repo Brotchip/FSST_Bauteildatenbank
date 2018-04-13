@@ -145,11 +145,14 @@ else
 						<table class="table-fill">
 							<thead>
 								<tr>
+									<th class="text-left">BestellNr</th>
+									<th class="text-left">ArtNr</th>
+									<th class="text-left">Bauteilbezeichnung</th>
+									<th class="text-left">Status</th>
+									<th class="text-left">Stueck</th>
 									<th class="text-left">MitarbeiterNr</th>
-									<th class="text-left">Vorname</th>
 									<th class="text-left">Nachname</th>
-									<th class="text-left">Abteilung</th>
-									<th class="text-left">kennwort</th>
+									<th class="text-left">GesamtPreis</th>
 								</tr>
 							</thead>
 							<tbody class="table-hover">
@@ -157,11 +160,14 @@ else
 								while ( $row = mysqli_fetch_array ( $results )) {
 									?>
 									<tr>
+										<td class="text-left"><?php echo $row["BestellNr"] ?></td>
+										<td class="text-left"><?php echo $row["ArtNr"] ?></td>
+										<td class="text-left"><?php echo $row["Bauteilbezeichnung"] ?></td>
+										<td class="text-left"><?php echo $row["Status"] ?></td>
+										<td class="text-left"><?php echo $row["Stueck"] ?></td>
 										<td class="text-left"><?php echo $row["MitarbeiterNr"] ?></td>
-										<td class="text-left"><?php echo $row["Vorname"] ?></td>
 										<td class="text-left"><?php echo $row["Nachname"] ?></td>
-										<td class="text-left"><?php echo $row["Abteilung"] ?></td>
-										<td class="text-left"><?php echo $row["kennwort"] ?></td>
+										<td class="text-left"><?php echo $row["GesamtPreis"] ?></td>
 									</tr>
 									<?php
 								}
