@@ -112,7 +112,7 @@ else
 					}
 					else
 					{
-						$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter`");
+						$results = mysqli_query ($conn,"SELECT c.BestellNr, b.ArtNr, b.Bauteilbezeichnung, c.Stueck, a.MitarbeiterNr, a.Nachname, b.Preis  FROM  mitarbeiter a, Bauteile b, bestellungen c WHERE c.ArtNr = b.ArtNr AND c.MitarbeiterNr = a.MitarbeiterNr;");
 					}
 					?>
 				</head>
@@ -135,7 +135,7 @@ else
 									<option value="3">Nachname</option>
 									<option value="4">Abteilung</option>
 								</select>
-								<input class="search" type="text" name="suchbegriff" placeholder="Suchbegriff eingeben..." /></li>
+								<input class="search" type="text" name="suchbegriff" placeholder="Suchbegriff eingeben..." />
 							</h1>
 							<p class="form_settings" style="padding-top: 15px">
 								<span>&nbsp;</span>
@@ -148,7 +148,6 @@ else
 									<th class="text-left">BestellNr</th>
 									<th class="text-left">ArtNr</th>
 									<th class="text-left">Bauteilbezeichnung</th>
-									<th class="text-left">Status</th>
 									<th class="text-left">Stueck</th>
 									<th class="text-left">MitarbeiterNr</th>
 									<th class="text-left">Nachname</th>
@@ -163,11 +162,10 @@ else
 										<td class="text-left"><?php echo $row["BestellNr"] ?></td>
 										<td class="text-left"><?php echo $row["ArtNr"] ?></td>
 										<td class="text-left"><?php echo $row["Bauteilbezeichnung"] ?></td>
-										<td class="text-left"><?php echo $row["Status"] ?></td>
 										<td class="text-left"><?php echo $row["Stueck"] ?></td>
 										<td class="text-left"><?php echo $row["MitarbeiterNr"] ?></td>
 										<td class="text-left"><?php echo $row["Nachname"] ?></td>
-										<td class="text-left"><?php echo $row["GesamtPreis"] ?></td>
+										<td class="text-left"><?php echo ($row["Preis"]*$row["Stueck"]) ?></td>
 									</tr>
 									<?php
 								}

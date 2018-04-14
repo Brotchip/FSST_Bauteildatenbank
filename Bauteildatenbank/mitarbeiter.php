@@ -36,7 +36,7 @@ else
 						<!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
 						<li class="selected"><a href="mitarbeiter.php">Mitarbeiter</a></li>
 						<li><a href="table.php">Bauteile</a></li>
-						<li><a href="bestellungen.php">Bestellungen</a></li>
+						<li><a href="bestellung.php">Bestellungen</a></li>
 					</ul>
 				</div>
 			</div>
