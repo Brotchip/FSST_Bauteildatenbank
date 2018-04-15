@@ -4,6 +4,10 @@ if(!(isset($_SESSION['priority'])))
 {
 	header("Location: ./login.php");
 }
+else  if ($_SESSION["priority"] != "admin")
+{
+	header("Location: ./table.php");
+}
 else
 {
 	?>
@@ -38,21 +42,9 @@ else
 			</div>
 			<div id="site_content">
 				<div id="content">
-					<head>
 						<?php
 
 						require('config.php');
-						//$suche = $_POST['search_field'];
-						//  $suche = $_POST['search_field'];
-
-						/*if(isset($_POST['search_field']))
-						{
-						$suche = $_POST['search_field'];
-						$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter`WHERE MitarbeiterNr='$suche' OR Vorname='$suche' OR Nachname='$suche' OR Abteilung='$suche'");
-					}*/
-
-
-
 					if(isset($_POST['sort']))
 					{
 						$sort = $_POST['sort'];
@@ -115,16 +107,6 @@ else
 						$results = mysqli_query ($conn,"SELECT c.BestellNr, b.ArtNr, b.Bauteilbezeichnung, c.Stueck, a.MitarbeiterNr, a.Nachname, b.Preis  FROM  mitarbeiter a, Bauteile b, bestellungen c WHERE c.ArtNr = b.ArtNr AND c.MitarbeiterNr = a.MitarbeiterNr;");
 					}
 					?>
-				</head>
-				<body>
-					<html lang="en">
-					<head>
-						<meta charset="utf-8" />
-						<title>Table Style</title>
-						<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-					</head>
-					<body>
-
 						<form method="POST">
 							<h1>Sortieren nach....
 								<br>
@@ -173,12 +155,6 @@ else
 								?>
 							</tbody>
 						</table>
-					</body>
-
-				</body>
-
-
-			</body>
 		</body>
 		</html>
 		<?php

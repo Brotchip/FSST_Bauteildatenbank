@@ -42,9 +42,9 @@ else
 			</div>
 			<div id="site_content">
 				<div id="content">
-						<?php
+					<?php
 
-						require('config.php');
+					require('config.php');
 					if(isset($_POST['sort']))
 					{
 						$sort = $_POST['sort'];
@@ -108,54 +108,52 @@ else
 					}
 					?>
 
-						<form method="POST">
-							<h1>Sortieren nach....
-								<br>
-								<select id="id" name="sort">
-									<option value="0">Spalten...</option>
-									<option value="1">MitarbeiterNr</option>
-									<option value="2">Vorname</option>
-									<option value="3">Nachname</option>
-									<option value="4">Abteilung</option>
-								</select>
-								<input class="search" type="text" name="suchbegriff" placeholder="Suchbegriff eingeben..." /></li>
-							</h1>
-							<p class="form_settings" style="padding-top: 15px">
-								<span>&nbsp;</span>
-								<input class="submit" type="submit" name="name" value="button" />
-							</p>
-						</form>
-						<table class="table-fill">
-							<thead>
-								<tr>
-									<th class="text-left">MitarbeiterNr</th>
-									<th class="text-left">Vorname</th>
-									<th class="text-left">Nachname</th>
-									<th class="text-left">Abteilung</th>
-									<th class="text-left">kennwort</th>
-								</tr>
-							</thead>
-							<tbody class="table-hover">
-								<?php
-								while ( $row = mysqli_fetch_array ( $results )) {
-									?>
-									<tr>
-										<td class="text-left"><?php echo $row["MitarbeiterNr"] ?></td>
-										<td class="text-left"><?php echo $row["Vorname"] ?></td>
-										<td class="text-left"><?php echo $row["Nachname"] ?></td>
-										<td class="text-left"><?php echo $row["Abteilung"] ?></td>
-										<td class="text-left"><?php echo $row["kennwort"] ?></td>
-									</tr>
-									<?php
-								}
-								mysqli_close($conn);
+					<form method="POST">
+						<h1>Sortieren nach....
+							<br>
+							<select id="id" name="sort">
+								<option value="0">Spalten...</option>
+								<option value="1">MitarbeiterNr</option>
+								<option value="2">Vorname</option>
+								<option value="3">Nachname</option>
+								<option value="4">Abteilung</option>
+							</select>
+							<input class="search" type="text" name="suchbegriff" placeholder="Suchbegriff eingeben..." /></li>
+						</h1>
+						<p class="form_settings" style="padding-top: 15px">
+							<span>&nbsp;</span>
+							<input class="submit" type="submit" name="name" value="button" />
+						</p>
+					</form>
+					<table class="table-fill">
+						<thead>
+							<tr>
+								<th class="text-left">MitarbeiterNr</th>
+								<th class="text-left">Vorname</th>
+								<th class="text-left">Nachname</th>
+								<th class="text-left">Abteilung</th>
+								<th class="text-left">kennwort</th>
+							</tr>
+						</thead>
+						<tbody class="table-hover">
+							<?php
+							while ( $row = mysqli_fetch_array ( $results )) {
 								?>
-							</tbody>
-						</table>
+								<tr>
+									<td class="text-left"><?php echo $row["MitarbeiterNr"] ?></td>
+									<td class="text-left"><?php echo $row["Vorname"] ?></td>
+									<td class="text-left"><?php echo $row["Nachname"] ?></td>
+									<td class="text-left"><?php echo $row["Abteilung"] ?></td>
+									<td class="text-left"><?php echo $row["kennwort"] ?></td>
+								</tr>
+								<?php
+							}
+							mysqli_close($conn);
+							?>
+						</tbody>
+					</table>
 				</body>
-			</body>
-		</body>
-		</html>
-		<?php
-	}
-	?>
+				</html>
+				<?php
+			}
+			?>
