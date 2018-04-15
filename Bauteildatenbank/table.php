@@ -37,12 +37,15 @@ else
 						}
 						?>
 						<li class="selected"><a href="table.php">Bauteile</a></li>
+						<li></li>
 						<?php
 						if ($_SESSION["priority"] == "admin")
 						{
-							?> <li><a href="Bestellung.php">Bestellungen</a></li> <?php
+							?> <li><a href="Bestellung.php">Bestellungen</a></li><?php
+							
 						}
 						?>
+						
 						</ul>
 					</div>
 				</div>
@@ -51,37 +54,97 @@ else
 							<?php
 
 							require('config.php');
-
-							if(isset($_POST['search_field']))
+					if(isset($_POST['sort']))
+					{
+						$sort = $_POST['sort'];
+						$suche = $_POST['suchbegriff'];
+						switch($sort) {
+							case 1:
+							if($suche!="")
 							{
-								$suche = $_POST['search_field'];
-								$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter`WHERE MitarbeiterNr='$suche' OR Vorname='$suche' OR Nachname='$suche' OR Abteilung='$suche'");
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE ArtNr='$suche'");
 							}
-
-							elseif(isset($_POST['sort_var']))
+							else
 							{
-								$sort_var = $_POST['sort_var'];
-								switch($sort_var) {
-									case 1:
-									$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter` ORDER BY MitarbeiterNr");
-									break;
-									case 2:
-									$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter` ORDER BY Vorname");
-									break;
-									case 3:
-									$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter` ORDER BY Nachname");
-									break;
-									case 4:
-									$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter` ORDER BY Abteilung");
-									break;
-									default:
-									$results = mysqli_query ($conn,"SELECT * FROM `bauteile`");
-								}
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile` ORDER BY ArtNr");
+							}
+							break;
+							case 2:
+							if($suche!="")
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE Hauptgruppe='$suche'");
+							}
+							else
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile` ORDER BY Hauptgruppe");
+							}
+							break;
+							case 3:
+							if($suche!="")
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE Nebengruppe='$suche'");
+							}
+							else
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile` ORDER BY Nebengruppe");
+							}
+							break;
+							case 4:
+							if($suche!="")
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE Bauteilbezeichnung='$suche'");
+							}
+							else
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile` ORDER BY Bauteilbezeichnung");
+							}
+							break;
+							case 5:
+							if($suche!="")
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE Stueckzahl='$suche'");
+							}
+							else
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile` ORDER BY Stueckzahl");
+							}
+							break;
+							case 6:
+							if($suche!="")
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE Preis='$suche'");
+							}
+							else
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile` ORDER BY Preis");
+							}
+							break;
+							case 7:
+							if($suche!="")
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE Hersteller='$suche'");
+							}
+							else
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile` ORDER BY Hersteller");
+							}
+							break;
+							default:
+							if($suche!="")
+							{
+								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`WHERE MitarbeiterNr='$suche' OR Vorname='$suche' OR Nachname='$suche' OR Abteilung='$suche'");
 							}
 							else
 							{
 								$results = mysqli_query ($conn,"SELECT * FROM `bauteile`");
 							}
+
+						}
+					}
+					else
+					{
+						$results = mysqli_query ($conn,"SELECT * FROM `bauteile`");
+					}
 							?>
 								<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 
@@ -90,10 +153,13 @@ else
 										<br>
 										<select id="id" name="sort">
 											<option value="0">Spalten...</option>
-											<option value="1">MitarbeiterNr</option>
-											<option value="2">Vorname</option>
-											<option value="3">Nachname</option>
-											<option value="4">Abteilung</option>
+											<option value="1">ArtNr</option>
+											<option value="2">Hauptgruppe</option>
+											<option value="3">Nebengruppe</option>
+											<option value="4">Bauteilbezeichnung</option>
+											<option value="5">Stueckzahl</option>
+											<option value="6">Preis</option>
+											<option value="7">Hersteller</option>
 										</select>
 										<input class="search" type="text" name="suchbegriff" placeholder="Suchbegriff eingeben..." /></li>
 									</h1>
@@ -130,7 +196,6 @@ else
 											<th class="text-left">Wert</th>
 											<th class="text-left">Stueckzahl</th>
 											<th class="text-left">Preis</th>
-											<th class="text-left">LieferantenNr</th>
 											<th class="text-left">Hersteller</th>
 										</tr>
 									</thead>
@@ -146,7 +211,6 @@ else
 												<td class="text-left"><?php echo $row["Wert"] ?></td>
 												<td class="text-left"><?php echo $row["Stueckzahl"] ?></td>
 												<td class="text-left"><?php echo $row["Preis"] ?></td>
-												<td class="text-left"><?php echo $row["LieferantenNr"] ?></td>
 												<td class="text-left"><?php echo $row["Hersteller"] ?></td>
 											</tr>
 											<?php

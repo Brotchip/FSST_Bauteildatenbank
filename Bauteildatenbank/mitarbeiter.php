@@ -42,19 +42,9 @@ else
 			</div>
 			<div id="site_content">
 				<div id="content">
-					<head>
 						<?php
 
 						require('config.php');
-						//$suche = $_POST['search_field'];
-						//  $suche = $_POST['search_field'];
-
-						/*if(isset($_POST['search_field']))
-						{
-						$suche = $_POST['search_field'];
-						$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter`WHERE MitarbeiterNr='$suche' OR Vorname='$suche' OR Nachname='$suche' OR Abteilung='$suche'");
-					}*/
-
 					if(isset($_POST['sort']))
 					{
 						$sort = $_POST['sort'];
@@ -117,15 +107,6 @@ else
 						$results = mysqli_query ($conn,"SELECT * FROM `mitarbeiter`");
 					}
 					?>
-				</head>
-				<body>
-					<html lang="en">
-					<head>
-						<meta charset="utf-8" />
-						<title>Table Style</title>
-						<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-					</head>
-					<body>
 
 						<form method="POST">
 							<h1>Sortieren nach....
@@ -171,11 +152,7 @@ else
 								?>
 							</tbody>
 						</table>
-					</body>
-
 				</body>
-
-
 			</body>
 		</body>
 		</html>
